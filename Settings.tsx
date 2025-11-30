@@ -233,3 +233,4 @@ const Settings: React.FC<SettingsProps> = ({ theme, setTheme, language, setLangu
 };
 
 export default Settings;
+    

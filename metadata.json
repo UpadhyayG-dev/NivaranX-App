@@ -1,0 +1,9 @@
+{
+  "name": "NIVARANX™",
+  "description": "National Initiative for Virtual Assistance and Resolution Across Nations Xperience - A Next-Gen Digital Empowerment Platform.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

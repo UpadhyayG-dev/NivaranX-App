@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0057FF" />
+    <title>NIVARANX™</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="https://img1.wsimg.com/isteam/ip/e8186a9b-5cfd-4d09-9ac8-87df4de0cc9e/IMG-20251109-WA0001.jpg">
+    <link rel="apple-touch-icon" href="https://img1.wsimg.com/isteam/ip/e8186a9b-5cfd-4d09-9ac8-87df4de0cc9e/IMG-20251109-WA0001.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries for Tools Hub Functionality -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              royal: {
+                DEFAULT: '#0057FF',
+                dark: '#0042c2',
+                light: '#4d8aff', // Added for better dark mode highlights
+              },
+              electric: {
+                DEFAULT: '#28E7FF',
+              },
+              deep: {
+                DEFAULT: '#0F1633', // Slightly lighter than #0A0F2C for better contrast against pure black
+                light: '#1A2346', // Improved visibility for cards in dark mode
+                dark: '#05081A',
+              },
+              success: '#1FD07F',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+              poppins: ['Poppins', 'sans-serif'],
+              roboto: ['Roboto', 'sans-serif'],
+              opensans: ['Open Sans', 'sans-serif'],
+              lato: ['Lato', 'sans-serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'slide-up': 'slideUp 0.3s ease-out forwards',
+              'fade-in': 'fadeIn 0.3s ease-out forwards',
+              'spin-slow': 'spin 8s linear infinite',
+            },
+            keyframes: {
+              slideUp: {
+                '0%': { transform: 'translateY(100%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0057FF;
+        border-radius: 3px;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior-y: none;
+      }
+      
+      /* Theme specific overrides */
+      .theme-amoled { background-color: #000000 !important; color: #ffffff; }
+      .theme-amoled .bg-deep { background-color: #000000 !important; }
+      .theme-amoled .dark\:bg-deep { background-color: #000000 !important; }
+      .theme-amoled .dark\:bg-deep-light { background-color: #111111 !important; border: 1px solid #333; }
+      
+      .theme-blue-cyan { background: linear-gradient(135deg, #0A0F2C 0%, #002B4D 100%) !important; color: #fff; }
+      
+      .theme-minimal { background-color: #ffffff !important; color: #000; }
+      .theme-minimal .bg-royal { background-color: #000 !important; }
+      .theme-minimal .text-royal { color: #000 !important; }
+
+      /* Indian Theme: Tricolor Gradient Background */
+      .theme-indian { 
+        background: linear-gradient(135deg, rgba(255, 153, 51, 0.08) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(19, 136, 8, 0.08) 100%) !important; 
+        color: #1a1a1a; 
+      }
+      .theme-indian .text-royal { color: #e65100 !important; } /* Saffron-ish for primary text */
+      .theme-indian .bg-royal { background-color: #e65100 !important; } /* Saffron-ish for buttons */
+
+      /* Neon Cyber: High Contrast, Neon Pink/Cyan on Black */
+      .theme-neon { background-color: #050505 !important; color: #e0e0e0; }
+      .theme-neon .bg-royal { background-color: #ff00ff !important; box-shadow: 0 0 10px #ff00ff; }
+      .theme-neon .text-royal { color: #ff00ff !important; }
+      .theme-neon .bg-electric { background-color: #00ffff !important; }
+      .theme-neon .text-electric { color: #00ffff !important; }
+      .theme-neon .bg-white, .theme-neon .dark\:bg-deep, .theme-neon .dark\:bg-deep-light { background-color: #0a0a0a !important; border-color: #1f1f1f !important; }
+      .theme-neon .text-gray-800 { color: #ffffff !important; }
+
+      /* Sunset Glow: Warm gradients */
+      .theme-sunset { background: linear-gradient(135deg, #2b0a1d 0%, #461111 100%) !important; color: #ffd1dc; }
+      .theme-sunset .bg-royal { background: linear-gradient(to right, #ff4500, #ff8c00) !important; }
+      .theme-sunset .text-royal { color: #ff4500 !important; }
+      .theme-sunset .bg-white, .theme-sunset .dark\:bg-deep-light { background-color: rgba(60, 20, 20, 0.8) !important; backdrop-filter: blur(10px); border: 1px solid rgba(255,100,100,0.1) !important; }
+      .theme-sunset .text-gray-800 { color: #fff !important; }
+
+      /* Eco Leaf: Nature inspired */
+      .theme-eco { background-color: #f1f8e9 !important; color: #1b5e20; }
+      .theme-eco .bg-royal { background-color: #2e7d32 !important; }
+      .theme-eco .text-royal { color: #2e7d32 !important; }
+      .theme-eco .bg-white { background-color: #ffffff !important; border-color: #c8e6c9 !important; }
+      .theme-eco .dark\:bg-deep { background-color: #1b5e20 !important; }
+
+      /* Royal Gold: Luxurious */
+      .theme-gold { background-color: #030712 !important; color: #fbfbfb; }
+      .theme-gold .bg-royal { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728) !important; color: #000; }
+      .theme-gold .text-royal { color: #d4af37 !important; }
+      .theme-gold .bg-white, .theme-gold .dark\:bg-deep-light { background-color: #0b0f19 !important; border: 1px solid #332a18 !important; }
+      .theme-gold .text-gray-500 { color: #a0a0a0 !important; }
+
+      /* Cotton Candy: Pastel */
+      .theme-candy { background: linear-gradient(180deg, #fff0f5 0%, #e6e6fa 100%) !important; color: #5e3a54; }
+      .theme-candy .bg-royal { background-color: #ff69b4 !important; }
+      .theme-candy .text-royal { color: #ff69b4 !important; }
+      .theme-candy .bg-electric { background-color: #87ceeb !important; }
+      .theme-candy .bg-white { background-color: rgba(255,255,255,0.8) !important; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 dark:bg-deep text-slate-900 dark:text-gray-100 transition-colors duration-300 select-none">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

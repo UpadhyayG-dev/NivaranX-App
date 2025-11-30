@@ -1,40 +1,20 @@
-# NivaranX – Digital Empowerment Platform
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-NivaranX is a next-generation digital empowerment platform that delivers fast and simple solutions within seconds.  
-It integrates a wide range of citizen services into one unified application.
+# Run and deploy your AI Studio app
 
-## 🚀 Key Features
-- National Services – PAN, Aadhaar, Passport
-- State Services
-- Tax & Finance
-- Banking & Insurance
-- Utility Services
-- Booking
-- Healthcare
-- Education
-- Employment
-- Legal Assistance
-- Design Services
-- IT Services
-- Startup Support
-- Smart Services
-- Agriculture
-- Transport
-- Housing
+This contains everything you need to run your app locally.
 
-## 🧩 Additional Modules
-- Insight: Complete company & founder details
-- Explore: All services at one place
-- Auto User-ID System (NVX92BH0672 format)
+View your app in AI Studio: https://ai.studio/apps/drive/12eX4LUKVWIns_5p7J_1UoMDSnbhBEt8U
 
-## 🛠️ Tech Stack
-- Frontend: React / Flutter (your choice)
-- Backend: Node.js / Firebase (your choice)
-- Database: MongoDB / Firestore
+## Run Locally
 
-## 👤 Developer
-UpadhyayG-dev (Navinagar, Aurangabad, Bihar)
-https://upadhyayg-dev.github.io
+**Prerequisites:**  Node.js
 
-## 📄 License
-MIT License
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Layout from './Layout';
+import Layout from './components/Layout';
 import SonicAI from './components/SonicAI';
 import ProcessFlow from './views/ProcessFlow';
 import NexaFeed from './views/NexaFeed';

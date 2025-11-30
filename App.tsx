@@ -3,15 +3,15 @@ import SonicAI from './SonicAI';
 import AppLock from './AppLock';
 import AppTour from './AppTour';
 import PWAInstallPrompt from './PWAInstallPrompt';
-import ProcessFlow from './views/ProcessFlow';
-import NexaFeed from './views/NexaFeed';
-import DocGenX from './views/DocGenX';
 import ToolsHub from './views/ToolsHub';
-import Profile from './views/Profile';
-import Settings from './views/Settings';
-import AuthFlow from './views/AuthFlow';
-import Explore from './views/Explore';
-import Help from './views/Help';
+import ProcessFlow from './ProcessFlow';
+import NexaFeed from './NexaFeed';
+import DocGenX from './DocGenX';
+import Explore from './Explore';
+import Help from './Help';
+import Profile from './Profile';
+import Settings from './Settings';
+import AuthFlow from './AuthFlow';
 import { ViewState, ThemeMode, UserProfile, FontMode, Language } from './types';
 import { 
   Users, Search, Mic, MapPin, Phone, Shield, Lock, 
